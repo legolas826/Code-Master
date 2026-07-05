@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafío: Contador de Clics - Code Master</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#2C008D',
+            'brand-primary': '#7744E7',
+            'brand-secondary': '#AF3100',
+            'brand-hover': '#0067AF',
+          },
+          fontFamily: {
+            'mono': ['monospace', 'Arial', 'Helvetica', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        @apply bg-brand-dark text-white font-mono;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+  <header class="sticky top-0 z-50 w-full bg-brand-dark/90 backdrop-blur-sm shadow-lg">
+    <nav class="container mx-auto flex items-center justify-between p-6">
+      <a href="index.html" class="text-3xl font-bold">
+        <h1>Code Master</h1>
+      </a>
+
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="hover:text-brand-primary transition-colors">Inicio</a>
+        <a href="aprender.html" class="hover:text-brand-primary transition-colors">Aprender</a>
+        <a href="practicar.html" class="text-brand-primary font-bold transition-colors">Practicar</a> <a href="#" class="hover:text-brand-primary transition-colors">Iniciar sesión</a>
+        <a href="#" class="bg-brand-secondary hover:bg-brand-hover text-white font-bold py-2 px-4 rounded-lg transition-colors">
+          Registrarse
+        </a>
+      </div>
+
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-black/50">
+      <a href="index.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Inicio</a>
+      <a href="aprender.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Aprender</a>
+      <a href="practicar.html" class="block py-2 px-6 text-center bg-brand-primary font-bold">Practicar</a> <a href="#" class="block py-2 px-6 text-center hover:bg-brand-primary">Iniciar sesión</a>
+      <a href="#" class="block py-4 px-6 text-center bg-brand-secondary hover:bg-brand-hover">Registrarse</a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <div class="container mx-auto px-6 py-12 flex flex-col md:flex-row gap-8 lg:gap-12">
+
+      <section class="w-full md:w-3/5">
+        
+        <div class="mb-4">
+          <span class="text-sm font-bold text-yellow-400 bg-yellow-900/50 px-3 py-1 rounded-full">Intermedio</span>
+          <span class="text-sm font-bold text-gray-400 ml-2">React</span>
+        </div>
+
+        <h2 class="text-4xl font-bold mb-4 text-brand-primary">Desafío: Contador de Clics</h2>
+        
+        <section id="mision" class="mb-8">
+          <h3 class="text-2xl font-bold mb-3">🎯 Tu Misión</h3>
+          <p class="text-lg text-gray-300 leading-relaxed">
+            Tu objetivo es construir un componente de React llamado `Contador`.
+            Este componente debe tener "memoria" (estado) para llevar la cuenta
+            de cuántas veces se ha presionado un botón.
+          </p>
+        </section>
+
+        <section id="requisitos" class="mb-8">
+          <h3 class="text-2xl font-bold mb-3">📋 Requisitos (React/JSX)</h3>
+          <p class="text-lg text-gray-300 mb-4">En tu archivo `Contador.js`, debes:</p>
+          <ul class="list-disc list-inside text-lg text-gray-300 pl-4 space-y-2">
+            <li>Importar <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">React</code> y el hook <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">useState</code>.</li>
+            <li>Crear una función componente llamada <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">Contador</code>.</li>
+            <li>Dentro del componente, usar <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">useState</code> para crear una variable de estado (ej. `conteo`) inicializada en `0`.</li>
+            <li>Renderizar un <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;p&gt;</code> que muestre el valor actual de `conteo`.</li>
+            <li>Renderizar un <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;button&gt;</code> con un evento <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">onClick</code>.</li>
+            <li>El `onClick` debe llamar a la función *setter* del estado (ej. `setConteo`) para incrementar el conteo en 1.</li>
+          </ul>
+        </section>
+
+        <section id="codigo-ejemplo" class="mb-8">
+          <h3 class="text-2xl font-bold mb-3">💡 Código de Ejemplo</h3>
+          <pre class="bg-black/80 text-white p-4 rounded-lg overflow-x-auto">
+<code>
+import React, { useState } from 'react';
+
+function Contador() {
+  const [conteo, setConteo] = useState(0);
+
+  const incrementar = () => {
+    setConteo(conteo + 1);
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Conteo actual: {conteo}&lt;/p&gt;
+      &lt;button onClick={incrementar}&gt;
+        Incrementar
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Contador;
+</code>
+          </pre>
+        </section>
+        
+        <div class="mt-12">
+          <a href="practicar.html" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+            ← Volver a Desafíos
+          </a>
+          <a href="#" class="bg-brand-primary hover:bg-brand-hover text-white font-bold py-3 px-6 rounded-lg transition-colors ml-4">
+            Completar Desafío
+          </a>
+        </div>
+      </section>
+
+      <aside class="w-full md:w-2/5">
+        <div class="bg-black/30 p-6 rounded-lg shadow-xl border border-gray-700 sticky top-24">
+          <h3 class="text-2xl font-bold mb-4">Resultado Esperado</h3>
+          
+          <div class="bg-gray-100 p-6 rounded-lg text-black font-sans">
+            
+            <div class="text-center">
+              <p class="text-lg mb-4">Conteo actual: <span class="font-bold text-2xl">0</span></p>
+              
+              <button class="bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                Incrementar
+              </button>
+            </div>
+            
+            <p class="mt-6 text-sm text-gray-600 text-center">
+              <b>Comportamiento:</b> Al hacer clic en el botón, el número '0' debe cambiar a '1', luego a '2', y así sucesivamente.
+            </p>
+            
+          </div>
+          
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer class="w-full py-8 text-center bg-black/50">
+    <div class="container mx-auto px-6">
+      <p class="text-gray-400">&copy; 2025 Code Master. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    });
+  </script>
+
+</body>
+</html>

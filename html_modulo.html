@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML5 Básico - Code Master</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#2C008D',
+            'brand-primary': '#7744E7',
+            'brand-secondary': '#AF3100',
+            'brand-hover': '#0067AF',
+          },
+          fontFamily: {
+            'mono': ['monospace', 'Arial', 'Helvetica', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        @apply bg-brand-dark text-white font-mono;
+      }
+      /* Esto hace que el scroll de la página sea suave al hacer clic en los enlaces del índice */
+      html {
+        scroll-behavior: smooth;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+  <header class="sticky top-0 z-50 w-full bg-brand-dark/90 backdrop-blur-sm shadow-lg">
+    <nav class="container mx-auto flex items-center justify-between p-6">
+      <a href="index.html" class="text-3xl font-bold">
+        <h1>Code Master</h1>
+      </a>
+
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="hover:text-brand-primary transition-colors">Inicio</a>
+        <a href="aprender.html" class="text-brand-primary font-bold transition-colors">Aprender</a> <a href="practicar.html" class="hover:text-brand-primary transition-colors">Practicar</a>
+        <a href="#" class="hover:text-brand-primary transition-colors">Iniciar sesión</a>
+        <a href="#" class="bg-brand-secondary hover:bg-brand-hover text-white font-bold py-2 px-4 rounded-lg transition-colors">
+          Registrarse
+        </a>
+      </div>
+
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-black/50">
+      <a href="index.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Inicio</a>
+      <a href="aprender.html" class="block py-2 px-6 text-center bg-brand-primary font-bold">Aprender</a> <a href="practicar.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Practicar</a>
+      <a href="#" class="block py-2 px-6 text-center hover:bg-brand-primary">Iniciar sesión</a>
+      <a href="#" class="block py-4 px-6 text-center bg-brand-secondary hover:bg-brand-hover">Registrarse</a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <div class="container mx-auto px-6 py-12">
+      <div class="flex flex-col md:flex-row gap-8 lg:gap-12">
+
+        <aside class="w-full md:w-1/4 md:sticky md:top-24 h-full">
+          <h3 class="text-2xl font-bold mb-4 text-brand-primary">Módulo: HTML5</h3>
+          <ul class="space-y-2">
+            <li><a href="#introduccion" class="block p-3 rounded hover:bg-black/30 transition-colors">1. Introducción al HTML</a></li>
+            <li><a href="#estructura" class="block p-3 rounded hover:bg-black/30 transition-colors">2. Estructura de un Documento</a></li>
+            <li><a href="#etiquetas" class="block p-3 rounded hover:bg-black/30 transition-colors">3. Etiquetas Básicas</a></li>
+            <li><a href="#atributos" class="block p-3 rounded hover:bg-black/30 transition-colors">4. Atributos</a></li>
+            <li><a href="#semantica" class="block p-3 rounded hover:bg-black/30 transition-colors">5. HTML Semántico</a></li>
+          </ul>
+        </aside>
+
+        <article class="w-full md:w-3/4">
+
+          <section id="introduccion" class="mb-12">
+            <h2 class="text-4xl font-bold mb-4 text-brand-primary">1. Introducción al HTML</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              HTML son las siglas de **HyperText Markup Language** (Lenguaje de Marcado de Hipertexto).
+              No es un lenguaje de programación; es un **lenguaje de marcado** que le dice al navegador web
+              cómo estructurar el contenido que ves.
+            </p>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Piensa en HTML como el **esqueleto** de una página web. Define los párrafos,
+              los encabezados, las imágenes y los enlaces. Todo lo que ves en una página web
+              comienza con HTML.
+            </p>
+          </section>
+
+          <section id="estructura" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">2. Estructura de un Documento</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Todo documento HTML5 sigue una estructura básica. Comienza con la declaración
+              <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;!DOCTYPE html&gt;</code>,
+              seguida de la etiqueta <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;html&gt;</code>.
+              Dentro, encontrarás el <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;head&gt;</code>
+              (con metadatos y el título) y el <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;body&gt;</code>
+              (con el contenido visible).
+            </p>
+            <pre class="bg-black/80 text-white p-4 rounded-lg overflow-x-auto">
+<code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Título de mi Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h1&gt;Hola, Mundo&lt;/h1&gt;
+  &lt;p&gt;Este es mi primer párrafo.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code>
+            </pre>
+          </section>
+          
+          <section id="etiquetas" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">3. Etiquetas Básicas</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Usamos etiquetas para definir elementos:
+            </p>
+            <ul class="list-disc list-inside text-lg text-gray-300 mb-4 pl-4 space-y-2">
+              <li><code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;h1&gt;</code> a <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;h6&gt;</code>: Para encabezados (títulos y subtítulos).</li>
+              <li><code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;p&gt;</code>: Para párrafos de texto.</li>
+              <li><code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;a&gt;</code>: Para enlaces (anclas).</li>
+              <li><code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;img&gt;</code>: Para imágenes.</li>
+              <li><code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;div&gt;</code>: Un contenedor genérico para agrupar elementos.</li>
+            </ul>
+          </section>
+
+          <section id="atributos" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">4. Atributos</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Las etiquetas pueden tener atributos, que proveen información adicional. Se colocan
+              en la etiqueta de apertura.
+            </p>
+            <pre class="bg-black/80 text-white p-4 rounded-lg overflow-x-auto">
+<code>
+&lt;!-- El atributo 'href' define la URL del enlace --&gt;
+&lt;a href="https://www.google.com"&gt;Ir a Google&lt;/a&gt;
+
+&lt;!-- Los atributos 'src' (fuente) y 'alt' (texto alternativo) son esenciales para imágenes --&gt;
+&lt;img src="logo.png" alt="El logo de mi sitio"&gt;
+</code>
+            </pre>
+          </section>
+
+          <section id="semantica" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">5. HTML Semántico</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              HTML5 introdujo etiquetas que describen su contenido. Usar <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;header&gt;</code>,
+              <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;footer&gt;</code>,
+              <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;nav&gt;</code>,
+              <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;main&gt;</code>,
+              <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;section&gt;</code>,
+              y <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;article&gt;</code>
+              es mejor que usar <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">&lt;div&gt;</code>
+              para todo, ya que le da más significado a tu página (bueno para SEO y accesibilidad).
+            </p>
+          </section>
+
+          <nav class="mt-12 pt-8 border-t border-gray-700 flex justify-between">
+            <a href="aprender.html" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              ← Volver a Cursos
+            </a>
+            <a href="html_practica.html" class="bg-brand-secondary hover:bg-brand-hover text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              Practicar Desafíos HTML →
+            </a>
+          </nav>
+        </article>
+        
+      </div>
+    </div>
+  </main>
+
+  <footer class="w-full py-8 text-center bg-black/50">
+    <div class="container mx-auto px-6">
+      <p class="text-gray-400">&copy; 2025 Code Master. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    });
+  </script>
+
+</body>
+</html>

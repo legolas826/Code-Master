@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafío: Centrado Perfecto - Code Master</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#2C008D',
+            'brand-primary': '#7744E7',
+            'brand-secondary': '#AF3100',
+            'brand-hover': '#0067AF',
+          },
+          fontFamily: {
+            'mono': ['monospace', 'Arial', 'Helvetica', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        @apply bg-brand-dark text-white font-mono;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+  <header class="sticky top-0 z-50 w-full bg-brand-dark/90 backdrop-blur-sm shadow-lg">
+    <nav class="container mx-auto flex items-center justify-between p-6">
+      <a href="index.html" class="text-3xl font-bold">
+        <h1>Code Master</h1>
+      </a>
+
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="hover:text-brand-primary transition-colors">Inicio</a>
+        <a href="aprender.html" class="hover:text-brand-primary transition-colors">Aprender</a>
+        <a href="practicar.html" class="text-brand-primary font-bold transition-colors">Practicar</a> <a href="#" class="hover:text-brand-primary transition-colors">Iniciar sesión</a>
+        <a href="#" class="bg-brand-secondary hover:bg-brand-hover text-white font-bold py-2 px-4 rounded-lg transition-colors">
+          Registrarse
+        </a>
+      </div>
+
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-black/50">
+      <a href="index.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Inicio</a>
+      <a href="aprender.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Aprender</a>
+      <a href="practicar.html" class="block py-2 px-6 text-center bg-brand-primary font-bold">Practicar</a> <a href="#" class="block py-2 px-6 text-center hover:bg-brand-primary">Iniciar sesión</a>
+      <a href="#" class="block py-4 px-6 text-center bg-brand-secondary hover:bg-brand-hover">Registrarse</a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <div class="container mx-auto px-6 py-12 flex flex-col md:flex-row gap-8 lg:gap-12">
+
+      <section class="w-full md:w-3/5">
+        
+        <div class="mb-4">
+          <span class="text-sm font-bold text-green-400 bg-green-900/50 px-3 py-1 rounded-full">Fácil</span>
+          <span class="text-sm font-bold text-gray-400 ml-2">CSS</span>
+        </div>
+
+        <h2 class="text-4xl font-bold mb-4 text-brand-primary">Desafío: Centrado Perfecto</h2>
+        
+        <section id="mision" class="mb-8">
+          <h3 class="text-2xl font-bold mb-3">🎯 Tu Misión</h3>
+          <p class="text-lg text-gray-300 leading-relaxed">
+            Usando **solo CSS Flexbox**, debes centrar la caja hija (clase `.caja-hija`)
+            perfectamente en medio de la caja padre (clase `.contenedor-padre`).
+          </p>
+        </section>
+
+        <section id="html-base" class="mb-8">
+          <h3 class="text-2xl font-bold mb-3">📄 HTML Base (No modificar)</h3>
+          <p class="text-lg text-gray-300 mb-4">Usa este HTML para tu solución:</p>
+          <pre class="bg-black/80 text-white p-4 rounded-lg overflow-x-auto">
+<code>
+&lt;div class="contenedor-padre"&gt;
+  &lt;div class="caja-hija"&gt;
+    Centrado!
+  &lt;/div&gt;
+&lt;/div&gt;
+</code>
+          </pre>
+        </section>
+
+        <section id="requisitos" class="mb-8">
+          <h3 class="text-2xl font-bold mb-3">📋 Requisitos (CSS)</h3>
+          <p class="text-lg text-gray-300 mb-4">Debes escribir el CSS para `.contenedor-padre`:</p>
+          <ul class="list-disc list-inside text-lg text-gray-300 pl-4 space-y-2">
+            <li>Debe usar <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">display: flex;</code>.</li>
+            <li>Debe usar <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">justify-content</code> para el centrado horizontal.</li>
+            <li>Debe usar <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">align-items</code> para el centrado vertical.</li>
+          </ul>
+        </section>
+        
+        <div class="mt-12">
+          <a href="practicar.html" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+            ← Volver a Desafíos
+          </a>
+          <a href="#" class="bg-brand-primary hover:bg-brand-hover text-white font-bold py-3 px-6 rounded-lg transition-colors ml-4">
+            Completar Desafío
+          </a>
+        </div>
+      </section>
+
+      <aside class="w-full md:w-2/5">
+        <div class="bg-black/30 p-6 rounded-lg shadow-xl border border-gray-700 sticky top-24">
+          <h3 class="text-2xl font-bold mb-4">Resultado Esperado</h3>
+          
+          <div class="bg-gray-100 rounded-lg">
+            <div class="h-64 flex justify-center items-center" style="border: 2px dashed #7744E7;">
+              <div class="w-32 h-32 bg-brand-primary text-white flex justify-center items-center font-bold text-center p-4">
+                Centrado!
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer class="w-full py-8 text-center bg-black/50">
+    <div class="container mx-auto px-6">
+      <p class="text-gray-400">&copy; 2025 Code Master. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    });
+  </script>
+
+</body>
+</html>

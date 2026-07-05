@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git y SQL - Code Master</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#2C008D',
+            'brand-primary': '#7744E7',
+            'brand-secondary': '#AF3100',
+            'brand-hover': '#0067AF',
+          },
+          fontFamily: {
+            'mono': ['monospace', 'Arial', 'Helvetica', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        @apply bg-brand-dark text-white font-mono;
+      }
+      /* Scroll suave */
+      html {
+        scroll-behavior: smooth;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+  <header class="sticky top-0 z-50 w-full bg-brand-dark/90 backdrop-blur-sm shadow-lg">
+    <nav class="container mx-auto flex items-center justify-between p-6">
+      <a href="index.html" class="text-3xl font-bold">
+        <h1>Code Master</h1>
+      </a>
+
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="hover:text-brand-primary transition-colors">Inicio</a>
+        <a href="aprender.html" class="text-brand-primary font-bold transition-colors">Aprender</a> <a href="practicar.html" class="hover:text-brand-primary transition-colors">Practicar</a>
+        <a href="#" class="hover:text-brand-primary transition-colors">Iniciar sesión</a>
+        <a href="#" class="bg-brand-secondary hover:bg-brand-hover text-white font-bold py-2 px-4 rounded-lg transition-colors">
+          Registrarse
+        </a>
+      </div>
+
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-black/50">
+      <a href="index.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Inicio</a>
+      <a href="aprender.html" class="block py-2 px-6 text-center bg-brand-primary font-bold">Aprender</a> <a href="practicar.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Practicar</a>
+      <a href="#" class="block py-2 px-6 text-center hover:bg-brand-primary">Iniciar sesión</a>
+      <a href="#" class="block py-4 px-6 text-center bg-brand-secondary hover:bg-brand-hover">Registrarse</a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <div class="container mx-auto px-6 py-12">
+      <div class="flex flex-col md:flex-row gap-8 lg:gap-12">
+
+        <aside class="w-full md:w-1/4 md:sticky md:top-24 h-full">
+          <h3 class="text-2xl font-bold mb-4 text-brand-primary">Módulo: Git y SQL</h3>
+          <ul class="space-y-2">
+            <li><a href="#intro-git" class="block p-3 rounded hover:bg-black/30 transition-colors">1. ¿Qué es Git?</a></li>
+            <li><a href="#git-comandos" class="block p-3 rounded hover:bg-black/30 transition-colors">2. Comandos Básicos de Git</a></li>
+            <li><a href="#intro-sql" class="block p-3 rounded hover:bg-black/30 transition-colors">3. ¿Qué es SQL?</a></li>
+            <li><a href="#sql-crud" class="block p-3 rounded hover:bg-black/30 transition-colors">4. Comandos Básicos de SQL</a></li>
+          </ul>
+        </aside>
+
+        <article class="w-full md:w-3/4">
+
+          <section id="intro-git" class="mb-12">
+            <h2 class="text-4xl font-bold mb-4 text-brand-primary">1. ¿Qué es Git?</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              **Git** es un **Sistema de Control de Versiones**. 
+              Piensa en él como una máquina del tiempo para tu código.
+              Te permite guardar "instantáneas" (llamadas *commits*) de tu proyecto
+              a medida que avanzas.
+            </p>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Si cometes un error, puedes "retroceder en el tiempo" a una versión anterior
+              que funcionaba. También es esencial para **trabajar en equipo**,
+              permitiendo que múltiples desarrolladores trabajen en el mismo proyecto
+              sin sobrescribir el trabajo de los demás.
+            </p>
+          </section>
+
+          <section id="git-comandos" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">2. Comandos Básicos de Git</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Trabajas con Git desde la terminal. El flujo básico es:
+              Modificas archivos, los "preparas" (`add`), guardas la instantánea (`commit`)
+              y la subes a un repositorio remoto como GitHub (`push`).
+            </p>
+            <pre class="bg-black/80 text-white p-4 rounded-lg overflow-x-auto">
+<code>
+# 1. Inicializa un repositorio de Git en tu carpeta
+$ git init
+
+# 2. Revisa el estado de tus archivos
+$ git status
+
+# 3. "Prepara" un archivo para guardarlo
+$ git add index.html
+
+# 4. "Guarda la instantánea" (commit) con un mensaje descriptivo
+$ git commit -m "Añadido el index.html inicial"
+
+# 5. Sube tus commits a un servidor remoto (como GitHub)
+$ git push origin main
+</code>
+            </pre>
+          </section>
+          
+          <section id="intro-sql" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">3. ¿Qué es SQL?</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              **SQL** (Structured Query Language) es el lenguaje estándar para
+              comunicarse con **Bases de Datos Relacionales** (como MySQL, PostgreSQL, etc.).
+            </p>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Imagina una base de datos como una hoja de cálculo de Excel gigante y súper potente.
+              SQL es el lenguaje que usas para pedirle datos (`SELECT`),
+              añadir nuevas filas (`INSERT`), modificar filas existentes (`UPDATE`)
+              o borrarlas (`DELETE`). Es la base de casi todo el backend.
+            </p>
+          </section>
+
+          <section id="sql-crud" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">4. Comandos Básicos de SQL (CRUD)</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Las cuatro operaciones básicas se conocen como **CRUD**:
+              Create (Crear), Read (Leer), Update (Actualizar) y Delete (Borrar).
+            </p>
+            <pre class="bg-black/80 text-white p-4 rounded-lg overflow-x-auto">
+<code>
+-- Esto es un comentario en SQL
+
+-- READ (Leer): Selecciona datos de una tabla 'usuarios'
+SELECT nombre, email FROM usuarios WHERE puntos > 100;
+
+-- CREATE (Crear): Inserta una nueva fila en la tabla 'usuarios'
+INSERT INTO usuarios (nombre, email, password)
+VALUES ('Alex', 'alex@email.com', 'pass123');
+
+-- UPDATE (Actualizar): Modifica una fila existente
+UPDATE usuarios
+SET puntos = 110
+WHERE nombre = 'Alex';
+
+-- DELETE (Borrar): Elimina una fila
+DELETE FROM usuarios WHERE nombre = 'Alex';
+</code>
+            </pre>
+          </section>
+
+          <nav class="mt-12 pt-8 border-t border-gray-700 flex justify-between">
+            <a href="react_module.html" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              ← Anterior: React.js
+            </a>
+            <a href="git_sql.html" class="bg-brand-secondary hover:bg-brand-hover text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              Practicar Desafíos Git y SQL →
+            </a>
+          </nav>
+        </article>
+        
+      </div>
+    </div>
+  </main>
+
+  <footer class="w-full py-8 text-center bg-black/50">
+    <div class="container mx-auto px-6">
+      <p class="text-gray-400">&copy; 2025 Code Master. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    });
+  </script>
+
+</body>
+</html>

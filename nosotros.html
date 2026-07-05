@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conócenos - Code Master</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#2C008D',
+            'brand-primary': '#7744E7',
+            'brand-secondary': '#AF3100',
+            'brand-hover': '#0067AF',
+          },
+          fontFamily: {
+            'mono': ['monospace', 'Arial', 'Helvetica', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        @apply bg-brand-dark text-white font-mono;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+  <header class="sticky top-0 z-50 w-full bg-brand-dark/90 backdrop-blur-sm shadow-lg">
+    <nav class="container mx-auto flex items-center justify-between p-6">
+      <a href="index.html" class="text-3xl font-bold">
+        <h1>Code Master</h1>
+      </a>
+
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="text-brand-primary font-bold transition-colors">Inicio</a> <a href="aprender.html" class="hover:text-brand-primary transition-colors">Aprender</a>
+        <a href="practicar.html" class="hover:text-brand-primary transition-colors">Practicar</a>
+        <a href="#" class="hover:text-brand-primary transition-colors">Iniciar sesión</a>
+        <a href="#" class="bg-brand-secondary hover:bg-brand-hover text-white font-bold py-2 px-4 rounded-lg transition-colors">
+          Registrarse
+        </a>
+      </div>
+
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-black/50">
+      <a href="index.html" class="block py-2 px-6 text-center bg-brand-primary font-bold">Inicio</a> <a href="aprender.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Aprender</a>
+      <a href="practicar.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Practicar</a>
+      <a href="#" class="block py-2 px-6 text-center hover:bg-brand-primary">Iniciar sesión</a>
+      <a href="#" class="block py-4 px-6 text-center bg-brand-secondary hover:bg-brand-hover">Registrarse</a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <div class="container mx-auto px-6 py-16">
+
+      <header class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-brand-primary">
+          Nuestra Misión
+        </h2>
+        <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          En Code Master, creemos que la educación en tecnología debe ser accesible para todos. 
+          Nuestra misión es crear la plataforma en línea más intuitiva y completa para 
+          que las personas puedan aprender y practicar programación, sin importar su nivel.
+        </p>
+      </header>
+
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <article class="bg-black/30 p-6 rounded-lg shadow-xl border border-gray-700 flex flex-col">
+          <h3 class="text-2xl font-bold text-brand-primary">1. Aprender</h3>
+          <p class="mt-3 text-gray-300 flex-grow">
+            Ofrecemos rutas de aprendizaje claras y módulos de lectura concisos. 
+            Desde los fundamentos de HTML hasta conceptos avanzados de Backend, 
+            te guiamos paso a paso.
+          </p>
+        </article>
+
+        <article class="bg-black/30 p-6 rounded-lg shadow-xl border border-gray-700 flex flex-col">
+          <h3 class="text-2xl font-bold text-brand-primary">2. Practicar</h3>
+          <p class="mt-3 text-gray-300 flex-grow">
+            El conocimiento solo se solidifica con la práctica. Resuelve desafíos 
+            interactivos diseñados para poner a prueba tus habilidades en 
+            situaciones del mundo real.
+          </p>
+        </article>
+
+        <article class="bg-black/30 p-6 rounded-lg shadow-xl border border-gray-700 flex flex-col">
+          <h3 class="text-2xl font-bold text-brand-primary">3. Construir</h3>
+          <p class="mt-3 text-gray-300 flex-grow">
+            Nuestro objetivo final es que puedas construir tus propios proyectos. 
+            Code Master te da las herramientas y la confianza para 
+            transformar tus ideas en código funcional.
+          </p>
+        </article>
+
+      </section>
+
+      <section class="text-center mt-20">
+        <h3 class="text-3xl font-bold">¿Listo para empezar tu viaje?</h3>
+        <p class="mt-4 text-lg text-gray-300 max-w-xl mx-auto">
+          Explora nuestros módulos de aprendizaje o salta directamente a los desafíos.
+        </p>
+        <div class="mt-8 space-x-4">
+          <a href="aprender.html" class="bg-brand-primary hover:bg-brand-hover text-white font-bold py-3 px-6 rounded-lg transition-colors">
+            Empezar a Aprender
+          </a>
+          <a href="practicar.html" class="bg-brand-secondary hover:bg-brand-hover text-white font-bold py-3 px-6 rounded-lg transition-colors">
+            Ver Desafíos
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <footer class="w-full py-8 text-center bg-black/50">
+    <div class="container mx-auto px-6">
+      <p class="text-gray-400">&copy; 2025 Code Master. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    });
+  </script>
+
+</body>
+</html>

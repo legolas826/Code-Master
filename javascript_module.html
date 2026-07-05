@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Moderno (ES6+) - Code Master</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#2C008D',
+            'brand-primary': '#7744E7',
+            'brand-secondary': '#AF3100',
+            'brand-hover': '#0067AF',
+          },
+          fontFamily: {
+            'mono': ['monospace', 'Arial', 'Helvetica', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        @apply bg-brand-dark text-white font-mono;
+      }
+      /* Scroll suave */
+      html {
+        scroll-behavior: smooth;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+  <header class="sticky top-0 z-50 w-full bg-brand-dark/90 backdrop-blur-sm shadow-lg">
+    <nav class="container mx-auto flex items-center justify-between p-6">
+      <a href="index.html" class="text-3xl font-bold">
+        <h1>Code Master</h1>
+      </a>
+
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="hover:text-brand-primary transition-colors">Inicio</a>
+        <a href="aprender.html" class="text-brand-primary font-bold transition-colors">Aprender</a> <a href="practicar.html" class="hover:text-brand-primary transition-colors">Practicar</a>
+        <a href="#" class="hover:text-brand-primary transition-colors">Iniciar sesión</a>
+        <a href="#" class="bg-brand-secondary hover:bg-brand-hover text-white font-bold py-2 px-4 rounded-lg transition-colors">
+          Registrarse
+        </a>
+      </div>
+
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-black/50">
+      <a href="index.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Inicio</a>
+      <a href="aprender.html" class="block py-2 px-6 text-center bg-brand-primary font-bold">Aprender</a> <a href="practicar.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Practicar</a>
+      <a href="#" class="block py-2 px-6 text-center hover:bg-brand-primary">Iniciar sesión</a>
+      <a href="#" class="block py-4 px-6 text-center bg-brand-secondary hover:bg-brand-hover">Registrarse</a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <div class="container mx-auto px-6 py-12">
+      <div class="flex flex-col md:flex-row gap-8 lg:gap-12">
+
+        <aside class="w-full md:w-1/4 md:sticky md:top-24 h-full">
+          <h3 class="text-2xl font-bold mb-4 text-brand-primary">Módulo: JavaScript</h3>
+          <ul class="space-y-2">
+            <li><a href="#introduccion-js" class="block p-3 rounded hover:bg-black/30 transition-colors">1. ¿Qué es JavaScript?</a></li>
+            <li><a href="#variables" class="block p-3 rounded hover:bg-black/30 transition-colors">2. Variables (let y const)</a></li>
+            <li><a href="#funciones" class="block p-3 rounded hover:bg-black/30 transition-colors">3. Funciones y Arrow Functions</a></li>
+            <li><a href="#dom" class="block p-3 rounded hover:bg-black/30 transition-colors">4. Manipulación del DOM</a></li>
+          </ul>
+        </aside>
+
+        <article class="w-full md:w-3/4">
+
+          <section id="introduccion-js" class="mb-12">
+            <h2 class="text-4xl font-bold mb-4 text-brand-primary">1. ¿Qué es JavaScript?</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              JavaScript (JS) es el **lenguaje de programación** que da vida a la web. 
+              Si HTML es el esqueleto y CSS es la piel, JavaScript es el **cerebro y los músculos**.
+            </p>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Permite crear contenido dinámico, controlar multimedia, animar imágenes y, 
+              básicamente, hacer que la página web responda a las acciones del usuario 
+              (como clics, envíos de formularios, etc.) sin necesidad de recargar la página.
+            </p>
+          </section>
+
+          <section id="variables" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">2. Variables (let y const)</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              En el JavaScript moderno (ES6+), usamos <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">let</code> y
+              <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">const</code> para declarar variables.
+              (Evitamos usar <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">var</code>).
+            </p>
+            <ul class="list-disc list-inside text-lg text-gray-300 mb-4 pl-4 space-y-2">
+              <li><code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">let</code>: Se usa para variables que **pueden cambiar** su valor.</li>
+              <li><code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">const</code>: Se usa para constantes, variables que **no cambiarán** su valor. Es la opción preferida por defecto.</li>
+            </ul>
+            <pre class="bg-black/80 text-white p-4 rounded-lg overflow-x-auto">
+<code>
+// Esto es un comentario en JavaScript
+
+// 'const' porque mi nombre no cambiará
+const nombre = "Alex";
+
+// 'let' porque la puntuación puede cambiar
+let puntuacion = 100;
+
+puntuacion = 110; // Esto es válido
+
+// nombre = "Juan"; // Esto daría un error, porque 'nombre' es una constante
+</code>
+            </pre>
+          </section>
+          
+          <section id="funciones" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">3. Funciones y Arrow Functions</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Las funciones son bloques de código reutilizables. ES6 introdujo una sintaxis
+              más corta y limpia llamada **Arrow Functions** (Funciones Flecha).
+            </p>
+            <pre class="bg-black/80 text-white p-4 rounded-lg overflow-x-auto">
+<code>
+// Función tradicional
+function sumar(a, b) {
+  return a + b;
+}
+
+// Misma función con sintaxis Arrow Function
+const sumarArrow = (a, b) => {
+  return a + b;
+};
+
+// Si solo tiene una línea, se puede acortar más
+const sumarSimple = (a, b) => a + b;
+
+// Llamando a la función
+let resultado = sumarSimple(5, 3); // resultado es 8
+</code>
+            </pre>
+          </section>
+
+          <section id="dom" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">4. Manipulación del DOM</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              El **DOM** (Document Object Model) es la representación de tu HTML que JavaScript
+              puede entender y modificar. Así es como hacemos que las páginas sean interactivas.
+            </p>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Los dos métodos más comunes son seleccionar un elemento y escuchar un evento (como un clic).
+            </p>
+            <pre class="bg-black/80 text-white p-4 rounded-lg overflow-x-auto">
+<code>
+&lt;!-- En tu HTML tienes esto: --&gt;
+&lt;button id="miBoton"&gt;Haz Clic&lt;/button&gt;
+&lt;p id="mensaje"&gt;&lt;/p&gt;
+
+&lt;!-- En tu script de JavaScript: --&gt;
+<script>
+  // 1. Seleccionar los elementos del DOM
+  const boton = document.getElementById("miBoton");
+  const mensaje = document.getElementById("mensaje");
+
+  // 2. Añadir un "escuchador de eventos"
+  boton.addEventListener("click", () => {
+    
+    // 3. Modificar el DOM cuando ocurra el evento
+    mensaje.textContent = "¡Gracias por hacer clic!";
+    
+  });
+</script>
+</code>
+            </pre>
+          </section>
+
+          <nav class="mt-12 pt-8 border-t border-gray-700 flex justify-between">
+            <a href="css_module.html" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              ← Anterior: CSS3
+            </a>
+            <a href="javascript_practica.html" class="bg-brand-secondary hover:bg-brand-hover text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              Practicar Desafíos JavaScript →
+            </a>
+          </nav>
+        </article>
+        
+      </div>
+    </div>
+  </main>
+
+  <footer class="w-full py-8 text-center bg-black/50">
+    <div class="container mx-auto px-6">
+      <p class="text-gray-400">&copy; 2025 Code Master. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React.js - Code Master</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#2C008D',
+            'brand-primary': '#7744E7',
+            'brand-secondary': '#AF3100',
+            'brand-hover': '#0067AF',
+          },
+          fontFamily: {
+            'mono': ['monospace', 'Arial', 'Helvetica', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        @apply bg-brand-dark text-white font-mono;
+      }
+      /* Scroll suave */
+      html {
+        scroll-behavior: smooth;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+  <header class="sticky top-0 z-50 w-full bg-brand-dark/90 backdrop-blur-sm shadow-lg">
+    <nav class="container mx-auto flex items-center justify-between p-6">
+      <a href="index.html" class="text-3xl font-bold">
+        <h1>Code Master</h1>
+      </a>
+
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="hover:text-brand-primary transition-colors">Inicio</a>
+        <a href="aprender.html" class="text-brand-primary font-bold transition-colors">Aprender</a> <a href="practicar.html" class="hover:text-brand-primary transition-colors">Practicar</a>
+        <a href="#" class="hover:text-brand-primary transition-colors">Iniciar sesión</a>
+        <a href="#" class="bg-brand-secondary hover:bg-brand-hover text-white font-bold py-2 px-4 rounded-lg transition-colors">
+          Registrarse
+        </a>
+      </div>
+
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-black/50">
+      <a href="index.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Inicio</a>
+      <a href="aprender.html" class="block py-2 px-6 text-center bg-brand-primary font-bold">Aprender</a> <a href="practicar.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Practicar</a>
+      <a href="#" class="block py-2 px-6 text-center hover:bg-brand-primary">Iniciar sesión</a>
+      <a href="#" class="block py-4 px-6 text-center bg-brand-secondary hover:bg-brand-hover">Registrarse</a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <div class="container mx-auto px-6 py-12">
+      <div class="flex flex-col md:flex-row gap-8 lg:gap-12">
+
+        <aside class="w-full md:w-1/4 md:sticky md:top-24 h-full">
+          <h3 class="text-2xl font-bold mb-4 text-brand-primary">Módulo: React.js</h3>
+          <ul class="space-y-2">
+            <li><a href="#intro-react" class="block p-3 rounded hover:bg-black/30 transition-colors">1. ¿Qué es React?</a></li>
+            <li><a href="#componentes-jsx" class="block p-3 rounded hover:bg-black/30 transition-colors">2. Componentes y JSX</a></li>
+            <li><a href="#estado-props" class="block p-3 rounded hover:bg-black/30 transition-colors">3. Estado (State) y Props</a></li>
+            <li><a href="#hooks" class="block p-3 rounded hover:bg-black/30 transition-colors">4. Hooks (useState)</a></li>
+          </ul>
+        </aside>
+
+        <article class="w-full md:w-3/4">
+
+          <section id="intro-react" class="mb-12">
+            <h2 class="text-4xl font-bold mb-4 text-brand-primary">1. ¿Qué es React?</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              React es una **biblioteca de JavaScript** (no un framework) creada por Facebook 
+              para construir interfaces de usuario (UIs) rápidas e interactivas.
+            </p>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Su principal fortaleza es que te permite construir tu UI a base de pequeñas
+              piezas reutilizables llamadas **Componentes**. React se encarga de "reaccionar"
+              a los cambios en tus datos y actualizar la pantalla de forma muy eficiente,
+              sin tener que recargar toda la página.
+            </p>
+          </section>
+
+          <section id="componentes-jsx" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">2. Componentes y JSX</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Los componentes son como funciones de JavaScript que devuelven HTML.
+              Para facilitar esto, React usa **JSX** (JavaScript XML), que nos permite
+              escribir una sintaxis similar al HTML dentro de nuestros archivos JavaScript.
+            </p>
+            <pre class="bg-black/80 text-white p-4 rounded-lg overflow-x-auto">
+<code>
+// Esto es un componente funcional de React
+// Es una función que devuelve JSX
+
+function Saludo() {
+  return &lt;h1&gt;Hola, bienvenido a React!&lt;/h1&gt;;
+}
+
+// Puedes usar variables dentro de JSX con llaves {}
+function SaludoPersonal(props) {
+  const nombre = "Alex";
+  return &lt;h1&gt;Hola, {nombre}!&lt;/h1&gt;;
+  // 'props' se explica en la siguiente sección
+}
+</code>
+            </pre>
+          </section>
+          
+          <section id="estado-props" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">3. Estado (State) y Props</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Esta es la parte más importante de React.
+            </p>
+            <ul class="list-disc list-inside text-lg text-gray-300 mb-4 pl-4 space-y-2">
+              <li><b>Props (Propiedades):</b> Son datos que se pasan *desde* un componente padre
+              *hacia* un componente hijo. Son inmutables (no se pueden cambiar desde el hijo).</li>
+              <li><b>State (Estado):</b> Es la memoria interna de un componente. Son datos
+              que el componente *gestiona por sí mismo* y que **pueden cambiar**.
+              Cuando el 'state' cambia, React vuelve a renderizar el componente.</li>
+            </ul>
+          </section>
+
+          <section id="hooks" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">4. Hooks (useState)</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Los **Hooks** son funciones especiales de React que nos permiten "engancharnos"
+              a las características de React (como el 'state') desde componentes funcionales.
+            </p>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              El hook más común es <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">useState</code>.
+              Nos permite añadir 'state' (memoria) a nuestros componentes.
+            </p>
+            <pre class="bg-black/80 text-white p-4 rounded-lg overflow-x-auto">
+<code>
+import React, { useState } from 'react';
+
+// Un componente 'Contador'
+function Contador() {
+  // 1. Declaramos una variable de estado 'conteo'
+  //    'setConteo' es la función que usamos para actualizarla
+  const [conteo, setConteo] = useState(0); // 0 es el valor inicial
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Has hecho clic {conteo} veces&lt;/p&gt;
+      
+      {/* 2. Cuando se hace clic, llamamos a 'setConteo' */}
+      &lt;button onClick={() => setConteo(conteo + 1)}&gt;
+        Haz Clic
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</code>
+            </pre>
+          </section>
+
+          <nav class="mt-12 pt-8 border-t border-gray-700 flex justify-between">
+            <a href="python_module.html" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              ← Anterior: Python
+            </a>
+            <a href="react_practica.html" class="bg-brand-secondary hover:bg-brand-hover text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              Practicar Desafíos React →
+            </a>
+          </nav>
+        </article>
+        
+      </div>
+    </div>
+  </main>
+
+  <footer class="w-full py-8 text-center bg-black/50">
+    <div class="container mx-auto px-6">
+      <p class="text-gray-400">&copy; 2025 Code Master. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    });
+  </script>
+
+</body>
+</html>

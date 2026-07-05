@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python para Backend - Code Master</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#2C008D',
+            'brand-primary': '#7744E7',
+            'brand-secondary': '#AF3100',
+            'brand-hover': '#0067AF',
+          },
+          fontFamily: {
+            'mono': ['monospace', 'Arial', 'Helvetica', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        @apply bg-brand-dark text-white font-mono;
+      }
+      /* Scroll suave */
+      html {
+        scroll-behavior: smooth;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+  <header class="sticky top-0 z-50 w-full bg-brand-dark/90 backdrop-blur-sm shadow-lg">
+    <nav class="container mx-auto flex items-center justify-between p-6">
+      <a href="index.html" class="text-3xl font-bold">
+        <h1>Code Master</h1>
+      </a>
+
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="hover:text-brand-primary transition-colors">Inicio</a>
+        <a href="aprender.html" class="text-brand-primary font-bold transition-colors">Aprender</a> <a href="practicar.html" class="hover:text-brand-primary transition-colors">Practicar</a>
+        <a href="#" class="hover:text-brand-primary transition-colors">Iniciar sesión</a>
+        <a href="#" class="bg-brand-secondary hover:bg-brand-hover text-white font-bold py-2 px-4 rounded-lg transition-colors">
+          Registrarse
+        </a>
+      </div>
+
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-black/50">
+      <a href="index.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Inicio</a>
+      <a href="aprender.html" class="block py-2 px-6 text-center bg-brand-primary font-bold">Aprender</a> <a href="practicar.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Practicar</a>
+      <a href="#" class="block py-2 px-6 text-center hover:bg-brand-primary">Iniciar sesión</a>
+      <a href="#" class="block py-4 px-6 text-center bg-brand-secondary hover:bg-brand-hover">Registrarse</a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <div class="container mx-auto px-6 py-12">
+      <div class="flex flex-col md:flex-row gap-8 lg:gap-12">
+
+        <aside class="w-full md:w-1/4 md:sticky md:top-24 h-full">
+          <h3 class="text-2xl font-bold mb-4 text-brand-primary">Módulo: Python</h3>
+          <ul class="space-y-2">
+            <li><a href="#intro-backend" class="block p-3 rounded hover:bg-black/30 transition-colors">1. ¿Qué es el Backend?</a></li>
+            <li><a href="#sintaxis-python" class="block p-3 rounded hover:bg-black/30 transition-colors">2. Sintaxis Básica de Python</a></li>
+            <li><a href="#frameworks" class="block p-3 rounded hover:bg-black/30 transition-colors">3. Frameworks (Flask)</a></li>
+            <li><a href="#apis" class="block p-3 rounded hover:bg-black/30 transition-colors">4. ¿Qué es una API?</a></li>
+          </ul>
+        </aside>
+
+        <article class="w-full md:w-3/4">
+
+          <section id="intro-backend" class="mb-12">
+            <h2 class="text-4xl font-bold mb-4 text-brand-primary">1. ¿Qué es el Backend?</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              El **Backend** (o "lado del servidor") es la parte de una aplicación web que
+              el usuario no ve. Es el motor que trabaja "detrás del escenario".
+            </p>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Se encarga de la lógica de negocio, de procesar la información,
+              de conectarse a la **base de datos** para guardar y leer información,
+              y de la seguridad (como la autenticación de usuarios).
+              Python es increíblemente popular para esto gracias a su simplicidad y su potente ecosistema.
+            </p>
+          </section>
+
+          <section id="sintaxis-python" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">2. Sintaxis Básica de Python</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              La sintaxis de Python es famosa por ser limpia y legible. No usa llaves
+              <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">{}</code>
+              ni punto y coma al final de las líneas. En su lugar, usa la **indentación**
+              (el espacio al inicio de la línea) para definir bloques de código.
+            </p>
+            <pre class="bg-black/80 text-white p-4 rounded-lg overflow-x-auto">
+<code>
+# Esto es un comentario en Python
+
+# Declaración de variables (no necesitas 'let' o 'const')
+nombre = "Code Master"
+puntos = 100
+
+# Definición de una función (fíjate en 'def' y la indentación)
+def saludar(usuario):
+  if usuario:
+    print(f"Hola, {usuario}! Bienvenido al backend.")
+  else:
+    print("Hola, mundo!")
+
+# Llamar a la función
+saludar(nombre)
+</code>
+            </pre>
+          </section>
+          
+          <section id="frameworks" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">3. Frameworks (Flask)</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Aunque puedes escribir un backend desde cero, es mucho más fácil y rápido
+              usar un **framework**. Un framework te da herramientas y una estructura
+              para construir aplicaciones robustas.
+            </p>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              **Flask** es un "micro-framework" de Python, perfecto para empezar. Es simple
+              y te permite crear una aplicación web en muy pocas líneas de código.
+            </p>
+            <pre class="bg-black/80 text-white p-4 rounded-lg overflow-x-auto">
+<code>
+# Un servidor web básico con Flask (ejemplo conceptual)
+# (Necesitarías instalar Flask: 'pip install Flask')
+
+from flask import Flask
+app = Flask(__name__)
+
+# Se define una "ruta". Esto se ejecuta cuando alguien visita "/"
+@app.route("/")
+def hola():
+  # La función devuelve el HTML que verá el usuario
+  return "&lt;h1&gt;Hola desde el servidor de Python!&lt;/h1&gt;"
+
+# Esto iniciaría el servidor (ejecutando 'python app.py')
+</code>
+            </pre>
+          </section>
+
+          <section id="apis" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">4. ¿Qué es una API?</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Una **API** (Application Programming Interface) es un conjunto de reglas que
+              permite que diferentes aplicaciones se comuniquen entre sí.
+            </p>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              En el backend, tú creas una API (generalmente una **API REST**) para que tu
+              frontend (hecho con HTML/CSS/JS o React) pueda pedirle ("GET") o enviarle ("POST")
+              datos en un formato universal como **JSON**.
+              El backend recibe la petición, va a la base de datos y le responde al frontend
+              solo con los datos que necesita.
+            </p>
+          </section>
+
+          <nav class="mt-12 pt-8 border-t border-gray-700 flex justify-between">
+            <a href="javascript_module.html" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              ← Anterior: JavaScript
+            </a>
+            <a href="python_practica.html" class="bg-brand-secondary hover:bg-brand-hover text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              Practicar Desafíos Python →
+            </a>
+          </nav>
+        </article>
+        
+      </div>
+    </div>
+  </main>
+
+  <footer class="w-full py-8 text-center bg-black/50">
+    <div class="container mx-auto px-6">
+      <p class="text-gray-400">&copy; 2025 Code Master. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    });
+  </script>
+
+</body>
+</html>

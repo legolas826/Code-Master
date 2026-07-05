@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3 Básico - Code Master</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#2C008D',
+            'brand-primary': '#7744E7',
+            'brand-secondary': '#AF3100',
+            'brand-hover': '#0067AF',
+          },
+          fontFamily: {
+            'mono': ['monospace', 'Arial', 'Helvetica', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        @apply bg-brand-dark text-white font-mono;
+      }
+      /* Scroll suave */
+      html {
+        scroll-behavior: smooth;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+  <header class="sticky top-0 z-50 w-full bg-brand-dark/90 backdrop-blur-sm shadow-lg">
+    <nav class="container mx-auto flex items-center justify-between p-6">
+      <a href="index.html" class="text-3xl font-bold">
+        <h1>Code Master</h1>
+      </a>
+
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="hover:text-brand-primary transition-colors">Inicio</a>
+        <a href="aprender.html" class="text-brand-primary font-bold transition-colors">Aprender</a> <a href="practicar.html" class="hover:text-brand-primary transition-colors">Practicar</a>
+        <a href="#" class="hover:text-brand-primary transition-colors">Iniciar sesión</a>
+        <a href="#" class="bg-brand-secondary hover:bg-brand-hover text-white font-bold py-2 px-4 rounded-lg transition-colors">
+          Registrarse
+        </a>
+      </div>
+
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-black/50">
+      <a href="index.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Inicio</a>
+      <a href="aprender.html" class="block py-2 px-6 text-center bg-brand-primary font-bold">Aprender</a> <a href="practicar.html" class="block py-2 px-6 text-center hover:bg-brand-primary">Practicar</a>
+      <a href="#" class="block py-2 px-6 text-center hover:bg-brand-primary">Iniciar sesión</a>
+      <a href="#" class="block py-4 px-6 text-center bg-brand-secondary hover:bg-brand-hover">Registrarse</a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <div class="container mx-auto px-6 py-12">
+      <div class="flex flex-col md:flex-row gap-8 lg:gap-12">
+
+        <aside class="w-full md:w-1/4 md:sticky md:top-24 h-full">
+          <h3 class="text-2xl font-bold mb-4 text-brand-primary">Módulo: CSS3</h3>
+          <ul class="space-y-2">
+            <li><a href="#introduccion-css" class="block p-3 rounded hover:bg-black/30 transition-colors">1. ¿Qué es CSS?</a></li>
+            <li><a href="#sintaxis" class="block p-3 rounded hover:bg-black/30 transition-colors">2. Sintaxis y Selectores</a></li>
+            <li><a href="#modelo-caja" class="block p-3 rounded hover:bg-black/30 transition-colors">3. El Modelo de Caja</a></li>
+            <li><a href="#flexbox" class="block p-3 rounded hover:bg-black/30 transition-colors">4. Introducción a Flexbox</a></li>
+          </ul>
+        </aside>
+
+        <article class="w-full md:w-3/4">
+
+          <section id="introduccion-css" class="mb-12">
+            <h2 class="text-4xl font-bold mb-4 text-brand-primary">1. ¿Qué es CSS?</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              CSS son las siglas de **Cascading Style Sheets** (Hojas de Estilo en Cascada).
+              Es el lenguaje que usamos para **dar estilo** a nuestras páginas HTML.
+            </p>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Si HTML es el esqueleto, CSS es la **piel, la ropa y el maquillaje**. Se encarga
+              de los colores, las fuentes, los espacios, las animaciones y cómo se ve
+              la página en diferentes dispositivos (diseño responsive).
+            </p>
+          </section>
+
+          <section id="sintaxis" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">2. Sintaxis y Selectores</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Una regla de CSS se compone de un **selector** y un **bloque de declaración**.
+              El selector "apunta" al elemento HTML que quieres estilizar, y el bloque de declaración
+              contiene las propiedades y valores.
+            </p>
+            <pre class="bg-black/80 text-white p-4 rounded-lg overflow-x-auto">
+<code>
+/* Esto es un comentario en CSS */
+
+/* El selector es 'p' (todos los párrafos) */
+p {
+  color: white;           /* Propiedad: color, Valor: white */
+  font-size: 16px;        /* Propiedad: font-size, Valor: 16px */
+}
+
+/* Selector de Clase */
+.mi-clase {
+  background: #2C008D;
+}
+
+/* Selector de ID */
+#mi-id-unico {
+  border: 1px solid red;
+}
+</code>
+            </pre>
+          </section>
+          
+          <section id="modelo-caja" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">3. El Modelo de Caja (Box Model)</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Todo elemento en HTML es una caja rectangular. El modelo de caja describe
+              cómo se calcula el espacio que ocupa esta caja. Consiste en:
+            </p>
+            <ul class="list-disc list-inside text-lg text-gray-300 mb-4 pl-4 space-y-2">
+              <li><b>Contenido (Content):</b> El texto, la imagen, etc.</li>
+              <li><b>Padding (Relleno):</b> Espacio transparente *dentro* del borde.</li>
+              <li><b>Border (Borde):</b> El borde que rodea al padding y al contenido.</li>
+              <li><b>Margin (Margen):</b> Espacio transparente *fuera* del borde, que separa esta caja de otras.</li>
+            </ul>
+            <pre class="bg-black/80 text-white p-4 rounded-lg overflow-x-auto">
+<code>
+.mi-caja {
+  width: 300px;
+  
+  margin: 10px;      /* 10px de margen en los 4 lados */
+  padding: 20px;     /* 20px de relleno en los 4 lados */
+  border: 2px solid #7744E7;
+}
+</code>
+            </pre>
+          </section>
+
+          <section id="flexbox" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">4. Introducción a Flexbox</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Flexbox es un módulo de CSS que facilita enormemente la alineación y distribución
+              de elementos en un contenedor. ¡Es la herramienta principal para crear diseños modernos!
+            </p>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+              Para usarlo, aplicas <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">display: flex;</code>
+              al contenedor padre. Luego, puedes usar propiedades como
+              <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">justify-content</code>
+              (para alinear horizontalmente) y
+              <code class="bg-black/50 text-yellow-300 px-2 py-1 rounded">align-items</code>
+              (para alinear verticalmente).
+            </p>
+            <pre class="bg-black/80 text-white p-4 rounded-lg overflow-x-auto">
+<code>
+.contenedor-padre {
+  display: flex;
+  justify-content: space-between; /* Pone espacio entre los hijos */
+  align-items: center;            /* Centra los hijos verticalmente */
+  height: 200px;
+  background: #1a1a1a;
+}
+</code>
+            </pre>
+          </section>
+
+          <nav class="mt-12 pt-8 border-t border-gray-700 flex justify-between">
+            <a href="html_modulo.html" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              ← Anterior: HTML5
+            </a>
+            <a href="css_practica.html" class="bg-brand-secondary hover:bg-brand-hover text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              Practicar Desafíos CSS →
+            </a>
+          </nav>
+        </article>
+        
+      </div>
+    </div>
+  </main>
+
+  <footer class="w-full py-8 text-center bg-black/50">
+    <div class="container mx-auto px-6">
+      <p class="text-gray-400">&copy; 2025 Code Master. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    });
+  </script>
+
+</body>
+</html>
